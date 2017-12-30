@@ -19,5 +19,11 @@
 			"Name": "AppleARKit",
 			"Enabled": false
 		}
+	],
+	"TargetPlatforms": [
+		"Android",
+		"HTML5",
+		"AllDesktop",
+		"WindowsNoEditor"
 	]
 }

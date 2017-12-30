@@ -4,11 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "RuntimeMeshComponent.h"
+#include "RuntimeMeshActorBase.h"
 #include "AnimatedTerrain.generated.h"
 
 UCLASS()
-class MYGAME_API AAnimatedTerrain : public AActor
+class MYGAME_API AAnimatedTerrain : public ARuntimeMeshActorBase
 {
 	GENERATED_BODY()
 	
@@ -36,12 +36,9 @@ public:
     float AnimationOffsetX = 0.0f;
     float AnimationOffsetY = 0.0f;
 
-    int32 HalfWidth = 400;
+    int32 HalfWidth = 40;
 
     float CellSize = 5;
     float Height = 20;
-
-    UPROPERTY(VisibleAnywhere)
-    URuntimeMeshComponent* RuntimeMesh;
 
 };
