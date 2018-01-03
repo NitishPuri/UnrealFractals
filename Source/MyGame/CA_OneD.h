@@ -20,7 +20,10 @@ public:
     ACA_OneD();
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Procedural Parameters")
-    FVector2D Size = FVector2D(10.0, 20.0);
+    int Rows = 20;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Procedural Parameters")
+    int Columns = 10;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Procedural Parameters")
     int Offset = 150;
@@ -40,14 +43,6 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Procedural Parameters")
     int AnimationDelay = 30;
 
-protected:
-    // Called when the game starts or when spawned
-    virtual void BeginPlay() override;
-
-    virtual void PostLoad() override;
-    virtual void PostActorCreated() override;
-
-public:    
     // Called every frame
     virtual void Tick(float DeltaTime) override;
 
@@ -55,29 +50,32 @@ public:
     virtual void PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent) override;
 #endif // WITH_EDITOR
 
+protected:
+    // Called when the game starts or when spawned
+    virtual void BeginPlay() override;
+
+    virtual void PostLoad() override;
+    virtual void PostActorCreated() override;
+
+    UPROPERTY(Transient, BlueprintReadOnly)
+    TArray< int > Cells;
+
+    UPROPERTY()
+    int32 Generation = 0;
 
 private:
 
     void NextGeneration();
     void GenerateMesh();
-
     void SetupMesh();
+    void InitializeArrays();
 
     int rules(int a, int b, int c);
     
     UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = true))
     UHierarchicalInstancedStaticMeshComponent* HISMActor;
 
-    UPROPERTY(EditDefaultsOnly, meta = (AllowPrivateAccess = true))
-    UHierarchicalInstancedStaticMeshComponent* HISMActorD;
-
-    UPROPERTY(Transient)
-    TArray< int > Cells;
-
-    TArray< UTextRenderComponent* > DebugText;
-
-    int Generation = 0;
-
-    int Counter = 0;
+    UPROPERTY()
+    int32 Counter = 0;
 
 };
