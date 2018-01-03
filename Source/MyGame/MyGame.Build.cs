@@ -12,7 +12,7 @@ public class MyGame : ModuleRules
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
-        PublicDependencyModuleNames.AddRange(new string[] { "ShaderCore", "RenderCore", "RHI", "RuntimeMeshComponent" });
+        PublicDependencyModuleNames.AddRange(new string[] { "ProceduralMeshes", "ShaderCore", "RenderCore", "RHI", "RuntimeMeshComponent" });
 
         // Uncomment if you are using Slate UI
         // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
